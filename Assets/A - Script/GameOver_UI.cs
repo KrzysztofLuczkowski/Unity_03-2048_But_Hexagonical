@@ -9,6 +9,7 @@ public class GameOverScreen : MonoBehaviour
 {
     public GameObject gameOverPanel;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI movesText;
     public TextMeshProUGUI timeText;
     public Button restartButton;
     public Button exitButton;
@@ -16,7 +17,7 @@ public class GameOverScreen : MonoBehaviour
     public AudioSource endSound;
 
     public GameUI gameUI; // Referencja do GameUI
-    
+
 
     private void Start()
     {
@@ -27,14 +28,15 @@ public class GameOverScreen : MonoBehaviour
 
     public void ShowGameOverScreen()
     {
-        
-        
+
+
         // Pobranie danych po ich zapisaniu w GameUI
         int score = gameUI.GetScore();
         int moves = gameUI.GetMoveCount();
         string formattedTime = gameUI.GetFormattedTime();
 
-        scoreText.text = $"Score {score} in {moves} Moves";
+        scoreText.text = $"Score: {score}";
+        movesText.text = $"Moves: {moves}";
         timeText.text = $"Time: {formattedTime}";
 
         highScoreManager.CheckAndSaveHighScore();
